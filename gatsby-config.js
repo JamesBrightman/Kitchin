@@ -1,24 +1,25 @@
 module.exports = {
-  siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "Recipe",
-  },
-  plugins: [
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/icon.png",
-      },
+    siteMetadata: {
+        title: "Kitchin🍳",
     },
-    "gatsby-transformer-remark",
-    "gatsby-plugin-mdx",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: "./src/pages/",
-      },
-      __key: "pages",
-    },
-  ],
+    plugins: [
+        "gatsby-plugin-image",
+        "gatsby-plugin-sharp",
+        "gatsby-plugin-material-ui",
+        {
+            resolve: "gatsby-plugin-manifest",
+            options: {
+                icon: "src/images/icon.png",
+            },
+        },
+        "gatsby-transformer-remark",
+        "gatsby-plugin-mdx",
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+                name: "blogPosts",
+                path: "./src",
+            }
+        },
+    ],
 };
