@@ -24,14 +24,14 @@ const IndexPage = ({data}) => {
 
     useEffect(() => {
         let tempAvailRecipes = [];
-        data.allMdx.edges.forEach((ele) => {
-            if (ele.node.frontmatter.title.toLowerCase()
+        data.allSanityRecipe.edges.forEach((ele) => {
+            if (ele.node.title.toLowerCase()
                 .includes(searchTerm.toLowerCase())) {
                 tempAvailRecipes.push(ele)
             }
         });
         setAvailRecipes(tempAvailRecipes);
-    }, [searchTerm, data.allMdx.edges]);
+    }, [searchTerm, data.allSanityRecipe.edges]);
 
     return (
         <Layout subTitle={"Easy online recipe book."}>
@@ -55,18 +55,19 @@ const IndexPage = ({data}) => {
 
 // --- Page Query ---
 
-export const HomeQuery = graphql`
-query HomeQuery {
-  allMdx {
+export const IndexQuery = graphql`
+query IndexQuery {
+  allSanityRecipe {
     edges {
       node {
-        excerpt
-        frontmatter {
-          title
-          time
-        }
-        fields {
-          slug
+        id
+        ingredients
+        notes
+        steps
+        time
+        title
+        slug {
+          current
         }
       }
     }

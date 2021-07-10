@@ -22,13 +22,13 @@ export const RecipeCard = ({data}) => {
     return (
         <RecipeCardWrapper id={"recipe-card-wrapper"}
                            onClick={() => {
-                               navigate(data.fields.slug)
+                               navigate(data.slug.current)
                            }}
         >
             <RecipeCardComponent elevation={5}>
                 <CardContent>
-                    <Typography>{data.frontmatter.title}</Typography>
-                    <Typography color={"textSecondary"}>{data.frontmatter.time}</Typography>
+                    <Typography>{data.title}</Typography>
+                    <Typography color={"textSecondary"}>{data.time}</Typography>
                 </CardContent>
             </RecipeCardComponent>
         </RecipeCardWrapper>

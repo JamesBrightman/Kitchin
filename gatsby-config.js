@@ -17,9 +17,18 @@ module.exports = {
         {
             resolve: "gatsby-source-filesystem",
             options: {
-                name: "blogPosts",
+                name: "fileSystem",
                 path: "./src",
             }
         },
-    ],
+        {
+            resolve: "gatsby-source-sanity",
+            options: {
+                projectId: '73mi3q96',
+                dataset: 'production',
+                // watchMode: true,
+                token: process.env.SANITY_TOKEN,
+            }
+        }
+    ]
 };

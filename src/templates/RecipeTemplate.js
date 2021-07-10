@@ -35,11 +35,11 @@ const GridHeaderTypography = styled(Typography)`
 `;
 
 const RecipeTemplate = (props) => {
-    const {data: {mdx}} = props;
+    const {data: {sanityRecipe}} = props;
 
     return (
         <TemplateWrapperDiv id={"template-wrapper-div"}>
-            <Layout subTitle={mdx.frontmatter.title}>
+            <Layout subTitle={sanityRecipe.title}>
                 <RecipeGrid id={"recipe-grid"}>
                     <div>
                         <GridHeaderTypography
@@ -47,11 +47,11 @@ const RecipeTemplate = (props) => {
                             {"Ingredients"}
                         </GridHeaderTypography>
                         <ul>
-                            {mdx.frontmatter.ingredients.map((ingred) => {
+                            {sanityRecipe.ingredients.map((ingredient) => {
                                 return (
                                     <li>
                                         <Typography>
-                                            {ingred}
+                                            {ingredient}
                                         </Typography>
                                     </li>
                                 )
@@ -64,7 +64,7 @@ const RecipeTemplate = (props) => {
                             {"Steps"}
                         </GridHeaderTypography>
                         <ol>
-                            {mdx.frontmatter.steps.map((step) => {
+                            {sanityRecipe.steps.map((step) => {
                                 return (
                                     <li>
                                         <Typography>
@@ -79,13 +79,13 @@ const RecipeTemplate = (props) => {
 
                 <ExtraSectionDiv id={"time-section"}>
                     <Typography variant={"h4"}>{"Time"}</Typography>
-                    <Typography style={{paddingTop: "16px"}}>{mdx.frontmatter.time}</Typography>
+                    <Typography style={{paddingTop: "16px"}}>{sanityRecipe.time}</Typography>
                 </ExtraSectionDiv>
 
                 <ExtraSectionDiv id={"notes-section"}>
                     <Typography variant={"h4"}>{"Notes"}</Typography>
                     <ul>
-                        {mdx.frontmatter.notes.map((note) => {
+                        {sanityRecipe.notes.map((note) => {
                             return (
                                 <li>
                                     <Typography>
@@ -102,24 +102,21 @@ const RecipeTemplate = (props) => {
 };
 
 // --- Page Query ---
+// Grab the data about individual sanity stored recipes to populate this template
 
 export const RecipeTemplateQuery = graphql`
-  query RecipeTemplateQuery($id: String) {
-    mdx(id: { eq: $id }) {
-      id
-    body
-    fields {
-      slug
+query RecipeTemplateQuery($id: String) {
+  sanityRecipe(id: { eq: $id }) {
+    id
+    slug {
+      current
     }
-    frontmatter {
-      ingredients
-      notes
-      steps
-      time
-      title
-    }
-    }
+    title
+    time
+    steps
+    ingredients
+    notes
   }
-`;
+}`;
 
 export default RecipeTemplate;
