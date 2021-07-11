@@ -6,6 +6,7 @@
   "main": "package.json",
   "author": "James Brightman <jamesmbrightman@gmail.com>",
   "license": "UNLICENSED",
+  "build-cms": "lerna bootstrap && lerna run build",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
