@@ -6,7 +6,6 @@
   "main": "package.json",
   "author": "James Brightman <jamesmbrightman@gmail.com>",
   "license": "UNLICENSED",
-  "build-cms": "lerna bootstrap && lerna run build",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build"
@@ -16,6 +15,7 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.12.2",
+    "@sanity/cli": "^2.12.2",
     "@sanity/components": "^2.2.6",
     "@sanity/core": "^2.12.2",
     "@sanity/default-layout": "^2.12.2",
